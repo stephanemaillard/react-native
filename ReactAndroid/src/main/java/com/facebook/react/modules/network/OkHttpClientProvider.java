@@ -9,10 +9,12 @@
 
 package com.facebook.react.modules.network;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nullable;
 
+import okhttp3.Protocol;
 import okhttp3.OkHttpClient;
 
 /**
@@ -44,6 +46,7 @@ public class OkHttpClientProvider {
       .readTimeout(0, TimeUnit.MILLISECONDS)
       .writeTimeout(0, TimeUnit.MILLISECONDS)
       .cookieJar(new ReactCookieJarContainer())
+      .protocols(Arrays.asList(Protocol.HTTP_1_1))
       .build();
   }
 }
